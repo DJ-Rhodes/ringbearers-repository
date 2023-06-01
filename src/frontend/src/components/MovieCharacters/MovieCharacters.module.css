@@ -1,0 +1,59 @@
+.container {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.head>img {
+  width: 2rem;
+}
+
+.stats {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: var(--grey);
+}
+
+
+.characters {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: var(--grey);
+  font-size: 0.85rem;
+}
+
+.character>div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1.05rem;
+}
+
+.character>:nth-child(1) {
+  margin-top: 0.8rem;
+}
+.character>:nth-child(1)>:nth-child(1) {
+  font-size: 1rem;
+}
+
+
+.raceChart {
+  width: 100%;
+  text-align: center;
+}
+
+.raceChart>:nth-child(1) {
+  text-align: center;
+}
