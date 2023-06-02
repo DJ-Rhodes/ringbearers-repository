@@ -1,20 +1,29 @@
 import React, { useEffect, useState } from 'react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import css from './MovieDashboard.module.css';
 import Statistics from '../components/Statistics/Statistics';
 import MovieCharacters from '../components/MovieCharacters/MovieCharacters';
 
 const MovieDashboard = () => {
   const [movie, setMovie] = useState({});
+  const { movieName: paramsMovieName } = useParams();
+  const [movieName, setMovieName] = useState(paramsMovieName);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchMovie = async () => {
-      const response = await fetch('http://localhost:8080/movie/The Return of the King');
+      const response = await fetch(`http://localhost:8080/movie/${movieName}`);
       const data = await response.json();
       setMovie(data);
-      console.log({ movie });
     };
     fetchMovie();
-  }, []);
+  }, [movieName]);
+
+  const handleMovieChange = (e) => {
+    const selectedMovieName = e.target.value;
+    setMovieName(selectedMovieName);
+    navigate(`/dashboard/${selectedMovieName}`);
+  };
 
   return (
     <div className={css.container}>
@@ -24,11 +33,18 @@ const MovieDashboard = () => {
           <div className={css.head}>
             <span>{movie.name}</span>
             <div className={css.movieButton}>
-              <select>
-                <option value="">Movie 1</option>
-                <option value="">Movie 2</option>
-                <option value="">Movie 3</option>
-              </select>
+              <Link to={`/dashboard/${movieName}`}>
+                <select className={css.movieSelect} value={movieName} onChange={handleMovieChange}>
+                  <option value="The Lord of the Rings Series">The Lord of the Rings Series</option>
+                  <option value="The Fellowship of the Ring">The Fellowship of the Ring</option>
+                  <option value="The Two Towers">The Two Towers</option>
+                  <option value="The Return of the King">The Return of the King</option>
+                  <option value="The Hobbit Series">The Hobbit Series</option>
+                  <option value="The Unexpected Journey">The Unexpected Journey</option>
+                  <option value="The Desolation of Smaug">The Desolation of Smaug</option>
+                  <option value="The Battle of the Five Armies">The Battle of the Five Armies</option>
+                </select>
+              </Link>
             </div>
           </div>
           <div className={css.cards}>

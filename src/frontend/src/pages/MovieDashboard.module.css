@@ -30,13 +30,26 @@
   font-weight: 500;
 }
 
-.movieButton > select {
+.movieButton {
   border: none;
   background: var(--orange-gradient);
   padding: 10px;
   font-weight: 500;
   border-radius: 10px;
   font-size: 1rem;
+  cursor: pointer;
+}
+
+.movieSelect {
+  border: none;
+  background: var(--orange-gradient);
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.movieSelect:focus {
+  outline: none;
 }
 
 .cards {

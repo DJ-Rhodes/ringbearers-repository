@@ -5,15 +5,17 @@ import { FaTasks } from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 
 const Sidebar = () => {
+
+
   return (
     <div className={css.container}>
 
-      <img src="./logo.png" alt="logo" className={css.logo} />
+      <img src="../../public/logo.png" alt="logo" className={css.logo} />
 
 
       <div className={css.menu}>
         <NavLink
-          to="dashboard"
+          to="/dashboard/default"
           className={css.item}
           title={"Movies"}
         >
@@ -21,7 +23,7 @@ const Sidebar = () => {
         </NavLink>
                 
         <NavLink
-          to="characters"
+          to="/characters"
           className={css.item}
           title="Characters"
         >
@@ -29,7 +31,7 @@ const Sidebar = () => {
         </NavLink>
 
         <NavLink
-          to="board"
+          to="/board"
           className={css.item}
           title="Trello Board"
         >

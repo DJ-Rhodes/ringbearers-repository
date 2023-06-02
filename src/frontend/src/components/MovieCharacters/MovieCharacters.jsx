@@ -7,7 +7,7 @@ const MovieCharacter = ({movie}) => {
   return (
     <div className={`${css.container} theme-container`}>
         <div className={css.head}>
-          <img src="./logo.png" alt="logo" />
+          <img src="../../public/logo.png" alt="logo" />
           <span>Character Stats</span>
         </div>
 

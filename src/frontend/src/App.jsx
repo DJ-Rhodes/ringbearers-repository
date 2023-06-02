@@ -7,7 +7,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="dashboard" element={<MovieDashboard />} />
+          <Route path="/dashboard/:movieName" element={<MovieDashboard />} />
         </Route>
       </Routes>
     </BrowserRouter>
