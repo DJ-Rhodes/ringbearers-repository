@@ -37,6 +37,10 @@ public class JobCompletionNotificationListener implements JobExecutionListener {
             jdbcTemplate.query("SELECT name, budget, score FROM movie",
                     (rs, row) -> "Name" + rs.getString(1) + " Budget: " + rs.getDouble(2) + " Score:" + rs.getDouble(3))
                     .forEach(str -> System.out.println(str));
+
+            jdbcTemplate.query("SELECT name, race FROM character",
+                            (rs, row) -> "Name: " + rs.getString(1) + " Race: " + rs.getString(2))
+                    .forEach(str -> System.out.println(str));
         }
 
     }

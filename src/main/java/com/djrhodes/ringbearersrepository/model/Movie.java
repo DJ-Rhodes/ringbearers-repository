@@ -2,6 +2,9 @@ package com.djrhodes.ringbearersrepository.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
+
+import java.util.List;
 
 @Entity
 public class Movie {
@@ -15,6 +18,7 @@ public class Movie {
     private int nominations;
     private int wins;
     private double score;
+
 
     public Movie() {
     }

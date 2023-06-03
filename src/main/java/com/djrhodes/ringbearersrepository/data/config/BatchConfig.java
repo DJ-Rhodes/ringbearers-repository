@@ -1,8 +1,11 @@
 package com.djrhodes.ringbearersrepository.data.config;
 
+import com.djrhodes.ringbearersrepository.data.CharacterDataProcessor;
+import com.djrhodes.ringbearersrepository.data.CharacterInput;
 import com.djrhodes.ringbearersrepository.data.MovieDataProcessor;
 import com.djrhodes.ringbearersrepository.data.MovieInput;
 import com.djrhodes.ringbearersrepository.model.Movie;
+import com.djrhodes.ringbearersrepository.model.Character;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.job.builder.JobBuilder;
@@ -34,6 +37,10 @@ public class BatchConfig {
             "academy_award_nominations", "academy_award_wins", "rotten_tomatoes_score"
     };
 
+    private final String[] CHARACTER_FIELD_NAMES = new String[] {
+            "name", "link", "race"
+    };
+
     /**
      * Creates a new Item Reader to generate Movie Input data.
      * @return Item Reader Builder
@@ -51,10 +58,27 @@ public class BatchConfig {
                 .build();
     }
 
+    @Bean
+    public FlatFileItemReader<CharacterInput> characterReader() {
+        return new FlatFileItemReaderBuilder<CharacterInput>()
+                .name("characterItemReader")
+                .resource(new ClassPathResource("Characters.csv"))
+                .delimited()
+                .names(CHARACTER_FIELD_NAMES)
+                .fieldSetMapper(new BeanWrapperFieldSetMapper<CharacterInput>() {{
+                    setTargetType(CharacterInput.class);
+                }})
+                .build();
+    }
+
     /** The Movie Data Processor */
     @Bean
     public MovieDataProcessor movieProcessor() {
         return new MovieDataProcessor();
+    }
+    @Bean
+    public CharacterDataProcessor characterProcessor(){
+        return  new CharacterDataProcessor();
     }
 
     /**
@@ -73,6 +97,16 @@ public class BatchConfig {
                 .build();
     }
 
+    @Bean
+    public JdbcBatchItemWriter<Character> characterWriter(DataSource dataSource) {
+        return new JdbcBatchItemWriterBuilder<Character>()
+                .itemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>())
+                .sql("INSERT INTO character (name, link, race)"
+                        + " VALUES (:name, :link, :race)")
+                .dataSource(dataSource)
+                .build();
+    }
+
     /**
      * Imports User Job.
      * Initializes Job Completion Listener.
@@ -84,11 +118,12 @@ public class BatchConfig {
      */
     @Bean
     public Job importUserJob(JobRepository jobRepository,
-                             JobCompletionNotificationListener listener, Step step1) {
+                             JobCompletionNotificationListener listener, Step step1, Step step2) {
         return new JobBuilder("importUserJob", jobRepository)
                 .incrementer(new RunIdIncrementer())
                 .listener(listener)
                 .flow(step1)
+                .next(step2)
                 .end()
                 .build();
     }
@@ -107,6 +142,17 @@ public class BatchConfig {
                 .<MovieInput, Movie>chunk(10, transactionManager)
                 .reader(movieReader())
                 .processor(movieProcessor())
+                .writer(writer)
+                .build();
+    }
+
+    @Bean
+    public Step step2(JobRepository jobRepository,
+                      PlatformTransactionManager transactionManager, JdbcBatchItemWriter<Character> writer) {
+        return new StepBuilder("step2", jobRepository)
+                .<CharacterInput, Character>chunk(10, transactionManager)
+                .reader(characterReader())
+                .processor(characterProcessor())
                 .writer(writer)
                 .build();
     }
