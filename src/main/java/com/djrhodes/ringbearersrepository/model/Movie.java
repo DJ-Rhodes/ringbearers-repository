@@ -6,19 +6,40 @@ import jakarta.persistence.Transient;
 
 import java.util.List;
 
+/**
+ * Movie Object class
+ */
 @Entity
 public class Movie {
 
+    /** Movie ID */
     @Id
     private Long id;
+    /** Movie name */
     private String name;
+    /** Movie runtime */
     private int runtime;
+    /** Movie budget */
     private double budget;
+    /** Movie revenue */
     private double revenue;
+    /** Movie award nominations */
     private int nominations;
+    /** Movie award wins */
     private int wins;
+    /** Movie rating */
     private double score;
+    /** List of chapters in the movie */
+    @Transient
+    private List<Chapter> chapters;
 
+    public List<Chapter> getChapters() {
+        return chapters;
+    }
+
+    public void setChapters(List<Chapter> chapters) {
+        this.chapters = chapters;
+    }
 
     public Movie() {
     }

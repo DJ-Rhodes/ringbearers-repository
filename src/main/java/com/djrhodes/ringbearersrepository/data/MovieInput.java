@@ -5,13 +5,21 @@ package com.djrhodes.ringbearersrepository.data;
  */
 public class MovieInput {
 
+    /** Movie ID */
     private String id;
+    /** Movie name */
     private String name;
+    /** Movie runtime */
     private int runtime_in_minutes;
+    /** Movie budget */
     private double budget_in_millions;
+    /** Movie revenue */
     private double box_office_revenue_in_millions;
+    /** Movie award nominations */
     private int academy_award_nominations;
+    /** Movie award wins */
     private int academy_award_wins;
+    /** Movie rating score */
     private double rotten_tomatoes_score;
 
     public String getId() {

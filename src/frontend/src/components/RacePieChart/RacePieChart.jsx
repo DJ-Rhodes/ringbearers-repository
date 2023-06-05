@@ -2,7 +2,12 @@ import React from 'react'
 import ReactECharts from 'echarts-for-react'
 import * as echarts from 'echarts'
 
-const RacePieChart = () => {
+const RacePieChart = ({chapters}) => {
+
+const data = chapters.map((chapter, index) => {
+  return { value: chapter.words, name: chapter.chapter };
+});
+
 const option = {
   color: [
     new echarts.graphic.LinearGradient(0, 0, 0, 1, [
@@ -68,18 +73,14 @@ const option = {
           fontWeight: "bold"
         }
       },
-      data: [
-        { value: 2, name: "Hobbit" },
-        { value: 1, name: "Maiar" },
-        { value: 1, name: "Men" },
-      ]
+      data: data
     }
   ]
 }
 
   return (
     <div>
-      <ReactECharts style={{height: 140, marginTop: "1rem"}} option={option}/>
+      <ReactECharts style={{height: 210, marginTop: "1rem"}} option={option}/>
     </div>
   )
 }

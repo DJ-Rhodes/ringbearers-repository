@@ -4,9 +4,17 @@ import com.djrhodes.ringbearersrepository.model.Character;
 import com.djrhodes.ringbearersrepository.model.Movie;
 import org.springframework.batch.item.ItemProcessor;
 
+/**
+ * Item Processor for Character Input data
+ */
 public class CharacterDataProcessor implements ItemProcessor<CharacterInput, Character> {
 
-
+    /**
+     * Processes Character Input data into new Character object.
+     * @param characterInput
+     * @return
+     * @throws Exception
+     */
     @Override
     public Character process(final CharacterInput characterInput) throws Exception {
 

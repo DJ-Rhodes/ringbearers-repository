@@ -1,9 +1,15 @@
 package com.djrhodes.ringbearersrepository.data;
 
+/**
+ * Class for storing Character input data
+ */
 public class CharacterInput {
 
+    /** Character name */
     private String name;
+    /** Link to character wiki */
     private String link;
+    /** Character race */
     private String race;
 
 
