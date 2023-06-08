@@ -4,6 +4,10 @@
   --grey: rgba(255, 255, 255, 0.597);
   --orange: #ff805d;
   --green: rgb(54, 234, 54);
+  --bg-color: #913D88;
+  --txt-color: #FFFFFF;
+  --icn-color: #FFFFFF;
+
   --orange-gradient: linear-gradient(
     268.35deg,
     rgba(255, 70, 70, 0.99) 3.47%,

@@ -820,6 +820,11 @@ debug@^4.1.0:
   dependencies:
     ms "2.1.2"
 
+diacriticless@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/diacriticless/-/diacriticless-1.0.1.tgz#e7dda978c2919609bb48aee1efc5de6a337bd4c3"
+  integrity sha512-sjYt2UstATX0vvQSbRkhQhnYLoZdVyRvhwPxTrzaDgwBAs47EIurh5lmMCgB3RUx6i9pzYe3Io0pk2B6XhIbug==
+
 dom-helpers@^5.0.1:
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/dom-helpers/-/dom-helpers-5.2.1.tgz#d9400536b2bf8225ad98fe052e029451ac40e902"

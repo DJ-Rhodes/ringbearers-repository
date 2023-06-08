@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import css from './CharacterDashboard.module.css';
-import CharacterOverview from "../components/Overview/CharacterOverview.jsx";
-import CharacterStatistics from "../components/Statistics/CharacterStatistics";
+import CharacterOverview from '../components/Overview/CharacterOverview.jsx';
+import CharacterStatistics from '../components/Statistics/CharacterStatistics';
 
 const CharacterDashboard = () => {
     const [character, setCharacter] = useState({});
-    const { characterName: paramsCharacterName } = useParams();
-    const [characterName, setCharacterName] = useState(paramsCharacterName);
-    const [chartState, setChartState] = useState("Series");
+    const { characterName } = useParams();
+    const [chartState, setChartState] = useState('Series');
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchCharacter = async () => {
@@ -19,23 +19,31 @@ const CharacterDashboard = () => {
         fetchCharacter();
     }, [characterName]);
 
+    useEffect(() => {
+        setChartState('Series');
+    }, [character]);
+
     const handleCharacterChange = (e) => {
         const selectedChartState = e.target.value;
         setChartState(selectedChartState);
     };
 
+    const handleOverviewCharacterClick = (name) => {
+        navigate(`/character/${name}`);
+    };
+
     return (
         <div className={css.container}>
-            {/* left side  */}
+            {/* left side */}
             <div className={css.dashboard}>
                 <div className={`${css.dashboardHead} theme-container`}>
                     <div className={css.head}>
                         <span>{character.name}</span>
                         <div className={css.movieButton}>
-                                <select className={css.movieSelect} onChange={handleCharacterChange}>
-                                    <option value="Series">Series Chart</option>
-                                    <option value="Bar">Bar Chart</option>
-                                </select>
+                            <select className={css.movieSelect} onChange={handleCharacterChange}>
+                                <option value="Series">Series Chart</option>
+                                <option value="Bar">Bar Chart</option>
+                            </select>
                         </div>
                     </div>
                     <div className={css.cards}>
@@ -44,7 +52,9 @@ const CharacterDashboard = () => {
                                 <span className={css.cardTitle}>Link</span>
                             </div>
                             <div className={css.cardAmount}>
-                                <a href={character.link} target="_blank" className={css.cardValue}>Wiki</a>
+                                <a href={character.link} target="_blank" rel="noopener noreferrer" className={css.cardValue}>
+                                    Wiki
+                                </a>
                             </div>
                         </div>
                         <div className={css.card}>
@@ -71,12 +81,11 @@ const CharacterDashboard = () => {
                                 <span className={css.cardValue}>{character.numberOfChapters}</span>
                             </div>
                         </div>
-
                     </div>
                 </div>
-                <CharacterStatistics character={character} chartState={chartState}/>
+                <CharacterStatistics character={character} chartState={chartState} />
             </div>
-            <CharacterOverview />
+            <CharacterOverview handleCharacterClick={handleOverviewCharacterClick} />
         </div>
     );
 };

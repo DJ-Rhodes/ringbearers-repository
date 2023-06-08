@@ -12,19 +12,49 @@
     gap: 1rem;
 }
 
-.head>img {
+.head > img {
     width: 2rem;
 }
 
 .stats {
-    padding: 0.5rem;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 1rem;
     color: var(--grey);
 }
 
+.searchIcon {
+    color: #ccc;
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.5s;
+}
+
+
+.searchInput {
+    border: 1px solid transparent;
+    outline: none;
+    background-size: 20px;
+    background-position: 13px;
+    background: transparent;
+    border-radius: 10px;
+    width: 0px;
+    height: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    transition: all 0.5s;
+    font-size: 16px;
+}
+
+.searchInput:focus,
+.searchInput:hover,
+.stats:hover .searchInput {
+    width: 300px;
+    padding-left: 20px;
+    border: 1px solid var(--grey);
+    color: var(--grey);
+}
 
 .chapters {
     display: flex;
@@ -35,28 +65,51 @@
     color: var(--grey);
     font-size: 0.85rem;
     padding-right: 10px;
+    color: var(--grey);
+    font-size: 0.85rem;
+    padding-right: 10px;
 }
 
-.chapter>div {
+.chapters a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.chapters a:hover {
+    color: var(--grey);
+    text-decoration: underline;
+}
+
+.chapter > div {
     display: flex;
     justify-content: space-between;
     width: 100%;
     gap: 1.05rem;
 }
 
-.chapter>:nth-child(1) {
+.chapter > :nth-child(1) {
     margin-top: 0.8rem;
 }
-.chapter>:nth-child(1)>:nth-child(1) {
+
+.chapter > :nth-child(1) > :nth-child(1) {
     font-size: 1rem;
 }
-
 
 .raceChart {
     width: 100%;
     text-align: center;
 }
 
-.raceChart>:nth-child(1) {
+.raceChart > :nth-child(1) {
     text-align: center;
 }
+
+.grey-container {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    color: var(--grey);
+}
+
