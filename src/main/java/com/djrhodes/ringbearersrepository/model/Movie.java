@@ -32,6 +32,17 @@ public class Movie {
     /** List of chapters in the movie */
     @Transient
     private List<Chapter> chapters;
+    /** Word Total for the movie */
+    @Transient
+    private int wordTotal;
+
+    public int getWordTotal() {
+        return wordTotal;
+    }
+
+    public void setWordTotal(int wordTotal) {
+        this.wordTotal = wordTotal;
+    }
 
     public List<Chapter> getChapters() {
         return chapters;

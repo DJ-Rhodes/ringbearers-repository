@@ -15,7 +15,7 @@ const Sidebar = () => {
 
       <div className={css.menu}>
         <NavLink
-          to="/dashboard/default"
+          to="/dashboard/:movieName"
           className={css.item}
           title={"Movies"}
         >
@@ -23,7 +23,7 @@ const Sidebar = () => {
         </NavLink>
                 
         <NavLink
-          to="/characters"
+          to="/character/:characterName"
           className={css.item}
           title="Characters"
         >

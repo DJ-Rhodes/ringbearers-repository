@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import css from './MovieDashboard.module.css';
 import Statistics from '../components/Statistics/Statistics';
-import MovieCharacters from '../components/MovieCharacters/MovieCharacters';
+import ChapterOverview from "../components/Overview/ChapterOverview.jsx";
 
 const MovieDashboard = () => {
   const [movie, setMovie] = useState({});
@@ -88,7 +88,7 @@ const MovieDashboard = () => {
         </div>
         <Statistics movie={movie} />
       </div>
-      <MovieCharacters movie={movie}/>
+      <ChapterOverview movie={movie}/>
     </div>
   );
 };

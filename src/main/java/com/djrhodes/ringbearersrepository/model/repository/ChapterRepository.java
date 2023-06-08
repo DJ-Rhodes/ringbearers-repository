@@ -11,5 +11,5 @@ import java.util.List;
  */
 public interface ChapterRepository extends CrudRepository<Chapter, Long> {
     List<Chapter> findAllByMovieIgnoreCase(String movieName);
-
+    List<Chapter> findAllByCharacterIgnoreCase(String characterName);
 }

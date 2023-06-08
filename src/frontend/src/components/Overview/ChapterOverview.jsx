@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import css from './MovieCharacters.module.css'
+import css from './ChapterOverview.module.css'
 import RacePieChart from '../RacePieChart/RacePieChart'
 
-const MovieCharacter = ({movie}) => {
+const ChapterOverview = ({movie}) => {
     const [chapters, setChapters] = useState([]);
 
     useEffect(() => {
@@ -51,4 +51,4 @@ const MovieCharacter = ({movie}) => {
   )
 }
 
-export default MovieCharacter
+export default ChapterOverview

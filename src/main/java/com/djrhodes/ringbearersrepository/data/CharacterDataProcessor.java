@@ -1,7 +1,6 @@
 package com.djrhodes.ringbearersrepository.data;
 
 import com.djrhodes.ringbearersrepository.model.Character;
-import com.djrhodes.ringbearersrepository.model.Movie;
 import org.springframework.batch.item.ItemProcessor;
 
 /**
