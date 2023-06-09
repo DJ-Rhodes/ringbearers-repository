@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import css from './Statistics.module.css'
 import { BsArrowUpShort } from 'react-icons/bs'
-import { groupNumber } from '../../data'
 import StatisticsChart from '../StatisticsChart/StatisticsChart'
 
 const Statistics = ({movie}) => {
@@ -23,15 +22,15 @@ const Statistics = ({movie}) => {
         </div>
 
         <div className={css.card}>
-          <span>Budget</span><span>$ {groupNumber(movie.budget * 1000000)}</span>
+          <span>Budget</span><span>$ {movie.budget * 1000000}</span>
         </div>
 
         <div className={css.card}>
-          <span>Revenue</span><span>$ {groupNumber(movie.revenue * 1000000)}</span>
+          <span>Revenue</span><span>$ {movie.revenue * 1000000}</span>
         </div>
 
         <div className={css.card}>
-          <span>Profit</span><span>$ {groupNumber((movie.revenue - movie.budget) * 1000000)}</span>
+          <span>Profit</span><span>$ {(movie.revenue * 1000000) - (movie.budget * 1000000)}</span>
         </div>
       </div>
 
