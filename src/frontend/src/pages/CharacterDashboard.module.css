@@ -30,7 +30,7 @@
     font-weight: 500;
 }
 
-.movieButton {
+.chartButton {
     border: none;
     background: var(--orange-gradient);
     padding: 10px;
@@ -40,7 +40,7 @@
     cursor: pointer;
 }
 
-.movieSelect {
+.chartSelect {
     border: none;
     background: var(--orange-gradient);
     font-weight: 500;
@@ -48,7 +48,7 @@
     cursor: pointer;
 }
 
-.movieSelect:focus {
+.chartSelect:focus {
     outline: none;
 }
 

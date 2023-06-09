@@ -1,6 +1,5 @@
 import moment from "moment/moment";
 import css from "./Layout.module.css";
-import { BiSearch } from "react-icons/bi";
 import Sidebar from "../Sidebar/Sidebar";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 

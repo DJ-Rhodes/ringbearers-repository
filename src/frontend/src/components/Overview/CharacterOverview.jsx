@@ -55,10 +55,10 @@ const CharacterOverview = () => {
                 />
             </div>
 
-            <div className={css.chapters}>
+            <div className={css.characters}>
                 {filteredCharacters.map((character, index) => (
                     <Link to={`/character/${character.name}`} key={index} className={css.link}>
-                        <div className={css.chapter} onClick={() => handleCharacterClick(character.name)}>
+                        <div className={css.character} onClick={() => handleCharacterClick(character.name)}>
                             <div>
                                 <span>{character.name}</span>
                             </div>

@@ -3,7 +3,6 @@ import ReactECharts from 'echarts-for-react';
 import * as echarts from 'echarts';
 
 const CharacterStatisticsBarChart = ({ character }) => {
-
     const movies = character.movies || {};
 
     const option = {
@@ -12,74 +11,81 @@ const CharacterStatisticsBarChart = ({ character }) => {
         toolbox: {
             feature: {
                 saveAsImage: {},
-            }
+            },
         },
 
         tooltip: {
-            trigger: "axis",
+            trigger: 'axis',
             axisPointer: {
-                type: "shadow"
+                type: 'shadow',
             },
-            backgroundColor: "rgba(0, 0, 0, 0.59)",
+            backgroundColor: 'rgba(0, 0, 0, 0.59)',
             borderWidth: 0,
         },
         grid: {
-            left: "3%",
-            right: "4%",
-            bottom: "3%",
+            left: '10%',
+            right: '10%',
+            bottom: '3%',
             containLabel: true,
             show: false,
         },
 
         xAxis: [
             {
-                type: "category",
+                type: 'category',
                 boundaryGap: false,
-                data: ["The Fellowship of The Ring", "The Two Towers", "The Return of The King", "Lord of The Ring Series"]
-            }
+                data: [
+                    '',
+                    'Fellowship of The Ring',
+                    'The Two Towers',
+                    'The Return of The King',
+                    'Series Total',
+                ],
+                axisLabel: {
+                    margin: 8,
+                },
+            },
         ],
         yAxis: [
             {
-                type: "value",
+                type: 'value',
                 splitLine: {
                     show: false,
-                }
-            }
+                },
+            },
         ],
         series: [
             {
-                type: "bar",
+                type: 'bar',
                 barWidth: "60%",
                 itemStyle: {
                     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
                         {
                             offset: 0,
-                            color: "rgb(255, 191, 0)",
+                            color: 'rgb(255, 191, 0)',
                         },
                         {
                             offset: 1,
-                            color: "#F450D3"
-                        }
+                            color: '#F450D3',
+                        },
                     ]),
-                    opacity: 0.8
+                    opacity: 0.8,
                 },
                 emphasis: {
-                    focus: "series",
+                    focus: 'series',
                 },
                 data: [
+                    0,
                     movies['The Fellowship Of The Ring'] || 0,
                     movies['The Two Towers'] || 0,
                     movies['The Return Of The King'] || 0,
-                    character.wordTotal
-                ]
-            }
-        ]
-    }
+                    character.wordTotal,
+                ],
+            },
+        ],
+    };
 
-    return (
-        <ReactECharts option={option} />
-    )
-
-}
+    return <ReactECharts option={option} />;
+};
 
 export default CharacterStatisticsBarChart;

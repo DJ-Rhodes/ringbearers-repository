@@ -8,6 +8,7 @@ const CharacterDashboard = () => {
     const [character, setCharacter] = useState({});
     const { characterName } = useParams();
     const [chartState, setChartState] = useState('Series');
+    const [prevChartState, setPrevChartState] = useState('Series');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -20,8 +21,8 @@ const CharacterDashboard = () => {
     }, [characterName]);
 
     useEffect(() => {
-        setChartState('Series');
-    }, [character]);
+        setPrevChartState(chartState);
+    }, [chartState]);
 
     const handleCharacterChange = (e) => {
         const selectedChartState = e.target.value;
@@ -39,8 +40,8 @@ const CharacterDashboard = () => {
                 <div className={`${css.dashboardHead} theme-container`}>
                     <div className={css.head}>
                         <span>{character.name}</span>
-                        <div className={css.movieButton}>
-                            <select className={css.movieSelect} onChange={handleCharacterChange}>
+                        <div className={css.chartButton}>
+                            <select className={css.chartSelect} value={chartState} onChange={handleCharacterChange}>
                                 <option value="Series">Series Chart</option>
                                 <option value="Bar">Bar Chart</option>
                             </select>
@@ -83,9 +84,10 @@ const CharacterDashboard = () => {
                         </div>
                     </div>
                 </div>
-                <CharacterStatistics character={character} chartState={chartState} />
+                <CharacterStatistics character={character} chartState={chartState} prevChartState={prevChartState} />
             </div>
-            <CharacterOverview handleCharacterClick={handleOverviewCharacterClick} />
+            {/* right side */}
+            <CharacterOverview character={character} handleCharacterClick={handleOverviewCharacterClick} />
         </div>
     );
 };
