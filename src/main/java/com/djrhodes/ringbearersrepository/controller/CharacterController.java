@@ -16,7 +16,7 @@ import java.util.List;
 
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 /**
  * Rest Controller for Characters
  */

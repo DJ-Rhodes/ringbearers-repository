@@ -15,7 +15,7 @@ import java.util.*;
  * Rest Controller for Movie.
  */
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 public class MovieController {
 
     /** The Movie Repository */
