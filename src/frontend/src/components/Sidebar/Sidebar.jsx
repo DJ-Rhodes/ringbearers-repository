@@ -10,12 +10,12 @@ const Sidebar = () => {
   return (
     <div className={css.container}>
 
-      <img src="../../public/logo.png" alt="logo" className={css.logo} />
+      <img src="/logo.png" alt="logo" className={css.logo} />
 
 
       <div className={css.menu}>
         <NavLink
-          to="/dashboard/:movieName"
+          to="/dashboard"
           className={css.item}
           title={"Movies"}
         >
@@ -23,7 +23,7 @@ const Sidebar = () => {
         </NavLink>
                 
         <NavLink
-          to="/character/:characterName"
+          to="/character"
           className={css.item}
           title="Characters"
         >

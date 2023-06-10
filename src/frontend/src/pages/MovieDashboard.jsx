@@ -5,16 +5,20 @@ import Statistics from '../components/Statistics/Statistics';
 import ChapterOverview from "../components/Overview/ChapterOverview.jsx";
 
 const MovieDashboard = () => {
+  const REACT_APP_API_ROOT_URL= ""
   const [movie, setMovie] = useState({});
   const { movieName: paramsMovieName } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchMovie = async () => {
-      const response = await fetch(`http://localhost:8080/movie/${paramsMovieName}`);
-      const data = await response.json();
-      setMovie(data);
+      if (paramsMovieName) {
+        const response = await fetch(`${REACT_APP_API_ROOT_URL}/movie/${paramsMovieName}`);
+        const data = await response.json();
+        setMovie(data);
+      }
     };
+
     fetchMovie();
   }, [paramsMovieName]);
 
@@ -22,6 +26,10 @@ const MovieDashboard = () => {
     const selectedMovieName = e.target.value;
     navigate(`/dashboard/${selectedMovieName}`);
   };
+
+  if (!movie) {
+    return <div>Loading...</div>;
+  }
 
   return (
       <div className={css.container}>
@@ -31,8 +39,8 @@ const MovieDashboard = () => {
             <div className={css.head}>
               <span>{movie.name}</span>
               <div className={css.movieButton}>
-                <select className={css.movieSelect} value={paramsMovieName} onChange={handleMovieChange}>
-                  <option value=":movieName" disabled hidden>
+                <select className={css.movieSelect} value={paramsMovieName || ""} onChange={handleMovieChange}>
+                  <option value="" disabled hidden>
                     Select Movie
                   </option>
                   <option value="The Lord of the Rings Series">The Lord of the Rings Series</option>

@@ -14,7 +14,7 @@ const Layout = () => {
 
 
       {/* making the dashboard as the default route */}
-      {pathname === "/" && <Navigate to="/dashboard/:movieName" />}
+      {pathname === "/" && <Navigate to="/dashboard" />}
 
 
       <div className={css.dashboard}>
@@ -33,7 +33,7 @@ const Layout = () => {
           </div>
 
           <div className={css.profile}>
-            <img src="../../public/profile.png" alt="person image" />
+            <img src="/profile.png" alt="person image" />
             <div className={css.details}>
               <span>Damian Rhodes</span>
               <a href="https://www.github.com/DJ-Rhodes/ringbearers-repository" target="_blank">Github Repository</a>

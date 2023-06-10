@@ -10,14 +10,17 @@ const CharacterDashboard = () => {
     const [chartState, setChartState] = useState('Series');
     const [prevChartState, setPrevChartState] = useState('Series');
     const navigate = useNavigate();
+    const REACT_APP_API_ROOT_URL =""
 
     useEffect(() => {
         const fetchCharacter = async () => {
-            const response = await fetch(`http://localhost:8080/character/${characterName}`);
+            const response = await fetch(`${REACT_APP_API_ROOT_URL}/character/${characterName}`);
             const data = await response.json();
             setCharacter(data);
         };
-        fetchCharacter();
+        if(characterName) {
+            fetchCharacter();
+        }
     }, [characterName]);
 
     useEffect(() => {
@@ -30,7 +33,7 @@ const CharacterDashboard = () => {
     };
 
     const handleOverviewCharacterClick = (name) => {
-        navigate(`/character/${name}`);
+        navigate(`character/${name}`);
     };
 
     return (

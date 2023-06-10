@@ -5,6 +5,7 @@ import { BiSearch } from 'react-icons/bi';
 import removeDiacritics from 'diacriticless';
 
 const CharacterOverview = () => {
+    const REACT_APP_API_ROOT_URL =""
     const navigate = useNavigate();
     const [characters, setCharacters] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
@@ -12,7 +13,7 @@ const CharacterOverview = () => {
 
     useEffect(() => {
         const fetchCharacters = async () => {
-            const response = await fetch('http://localhost:8080/characters');
+            const response = await fetch(`${REACT_APP_API_ROOT_URL}/characters`);
             const data = await response.json();
             setCharacters(data);
             setFilteredCharacters(data);
@@ -39,7 +40,7 @@ const CharacterOverview = () => {
     return (
         <div className={`${css.container} theme-container`}>
             <div className={css.head}>
-                <img src="../../public/logo.png" alt="logo" />
+                <img src="/logo.png" alt="logo" />
                 <span>Character List</span>
             </div>
 

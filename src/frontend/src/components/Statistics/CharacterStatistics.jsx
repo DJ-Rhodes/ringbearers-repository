@@ -5,9 +5,7 @@ import CharacterStatisticsSeriesChart from '../StatisticsChart/CharacterStatisti
 import CharacterStatisticsBarChart from '../StatisticsChart/CharacterStatisticsBarChart.jsx'
 
 const CharacterStatistics = ({ character, chartState }) => {
-    if (Object.keys(character).length === 0) {
-        return <div>Loading...</div>;
-    }
+
 
     return (
         <div className={`${css.container} theme-container`}>
